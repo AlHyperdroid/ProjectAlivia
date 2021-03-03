@@ -1,3 +1,5 @@
+package JDBCFirst;
+
 import java.sql.*;
 
 public class JDBCExample {
@@ -8,6 +10,13 @@ public class JDBCExample {
         private String url;
         private String tag;
 
+        public PhotoSites(int id, String source_name, String url, String tag) {
+            this.id = id;
+            this.source_name = source_name;
+            this.url = url;
+            this.tag = tag;
+
+        }
 
         public int getId() {
             return id;
@@ -39,14 +48,6 @@ public class JDBCExample {
 
         public void setTag(String tag) {
             this.tag = tag;
-        }
-
-        public PhotoSites(int id, String source_name, String url, String tag) {
-            this.id = id;
-            this.source_name = source_name;
-            this.url = url;
-            this.tag = tag;
-
         }
 
         @Override
