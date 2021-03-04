@@ -5,13 +5,13 @@ import entity.PhotoSites;
 
 public class JDBCExample {
 
-
-
     public static void main(String[] args) {
         PhotoSitesDao photoSitesDao = new PhotoSitesDao();
-        PhotoSites National = photoSitesDao.get(1);
-        System.out.println(National);
-
+        PhotoSites src = new PhotoSites();
+        src.setSource_name("Pinterest");
+        src.setUrl("https://www.pinterest.com");
+        src.setTag("pinterest");
+        photoSitesDao.save(src);
     }
 }
 

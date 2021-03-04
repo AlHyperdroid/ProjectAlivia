@@ -44,7 +44,7 @@ public class PhotoSitesDao implements Dao<PhotoSites> {
         List<PhotoSites> photoSites = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("Select * from photosites;");
+            ResultSet rs = statement.executeQuery("Select * from inspiration;");
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String source_name = rs.getString("source_name");
@@ -64,15 +64,41 @@ public class PhotoSitesDao implements Dao<PhotoSites> {
 
     }
 
-
     @Override
     public void save(PhotoSites photoSites) {
+        Connection connection = DBConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement("insert into inspiration(source_name, url, tag) VALUES (?,?,?);");
+            ps.setString(1, photoSites.getSource_name());
+            ps.setString(2, photoSites.getUrl());
+            ps.setString(3, photoSites.getTag());
 
+            int i = ps.executeUpdate();
+            System.out.println(i);
+            System.out.println("Object was created successful");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override
-    public void update(PhotoSites photoSites, String[] params) {
+    public void update(PhotoSites photoSites){
+        Connection connection = DBConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement("update inspiration set id = ?, source_name = ?, url = ?, tag = ? where id = ?;");
+            ps.setString(1, photoSites.getSource_name());
+            ps.setString(2, photoSites.getUrl());
+            ps.setString(3, photoSites.getTag());
+            ps.setInt(4, photoSites.getId());
+            int i = ps.executeUpdate();
+            System.out.println(i);
+            System.out.println("Object was updated successful");
 
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+
+        }
     }
 
     @Override
@@ -84,20 +110,15 @@ public class PhotoSitesDao implements Dao<PhotoSites> {
     public void delete(int id) {
             Connection connection = DBConnection.getConnection();
             try {
-                PreparedStatement ps = connection.prepareStatement("delete from photosites where id = ?;");
+                PreparedStatement ps = connection.prepareStatement("delete from inspiration where id = ?;");
                 ps.setInt(1, id);
-                ResultSet rs = ps.executeQuery();
-                if(!rs.next()) {
-                    System.out.println("Object was deleted successful");
-                }
+                int i = ps.executeUpdate();
+                System.out.println(i);
+                System.out.println("Object was deleted successful");
+
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
-            }finally {
-                try {
-                    connection.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
+
             }
         }
     }
