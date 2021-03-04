@@ -7,6 +7,9 @@ public class PhotoSites {
     private String url;
     private String tag;
 
+    public PhotoSites() {
+    }
+
     public PhotoSites(int id, String source_name, String url, String tag) {
         this.id = id;
         this.source_name = source_name;
