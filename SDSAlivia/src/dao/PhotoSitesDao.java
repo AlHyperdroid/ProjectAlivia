@@ -16,7 +16,7 @@ public class PhotoSitesDao implements Dao<PhotoSites> {
         Connection connection = DBConnection.getConnection();
         PhotoSites phs = new PhotoSites();
         try {
-            PreparedStatement ps = connection.prepareStatement("Select * from photosites where id = ?;");
+            PreparedStatement ps = connection.prepareStatement("Select * from stocks where id = ?;");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
@@ -44,7 +44,7 @@ public class PhotoSitesDao implements Dao<PhotoSites> {
         List<PhotoSites> photoSites = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("Select * from inspiration;");
+            ResultSet rs = statement.executeQuery("Select * from stocks;");
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String source_name = rs.getString("source_name");
@@ -68,10 +68,10 @@ public class PhotoSitesDao implements Dao<PhotoSites> {
     public void save(PhotoSites photoSites) {
         Connection connection = DBConnection.getConnection();
         try {
-            PreparedStatement ps = connection.prepareStatement("insert into inspiration(source_name, url, tag) VALUES (?,?,?);");
+            PreparedStatement ps = connection.prepareStatement("insert into stocks(source_name, url) VALUES (?,?);");
             ps.setString(1, photoSites.getSource_name());
             ps.setString(2, photoSites.getUrl());
-            ps.setString(3, photoSites.getTag());
+
 
             int i = ps.executeUpdate();
             System.out.println(i);
@@ -86,7 +86,7 @@ public class PhotoSitesDao implements Dao<PhotoSites> {
     public void update(PhotoSites photoSites){
         Connection connection = DBConnection.getConnection();
         try {
-            PreparedStatement ps = connection.prepareStatement("update inspiration set id = ?, source_name = ?, url = ?, tag = ? where id = ?;");
+            PreparedStatement ps = connection.prepareStatement("update stocks set id = ?, source_name = ?, url = ?, tag = ? where id = ?;");
             ps.setString(1, photoSites.getSource_name());
             ps.setString(2, photoSites.getUrl());
             ps.setString(3, photoSites.getTag());
@@ -110,7 +110,7 @@ public class PhotoSitesDao implements Dao<PhotoSites> {
     public void delete(int id) {
             Connection connection = DBConnection.getConnection();
             try {
-                PreparedStatement ps = connection.prepareStatement("delete from inspiration where id = ?;");
+                PreparedStatement ps = connection.prepareStatement("delete from stocks where id = ?;");
                 ps.setInt(1, id);
                 int i = ps.executeUpdate();
                 System.out.println(i);
