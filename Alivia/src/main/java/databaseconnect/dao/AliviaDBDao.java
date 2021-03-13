@@ -19,16 +19,16 @@ public class AliviaDBDao implements Dao<AliviaDB> {
             PreparedStatement ps = connection.prepareStatement("Select * from stocks where id = ?;");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 int idd = rs.getInt("id");
                 String source_name = rs.getString("source_name");
                 String url = rs.getString("url");
                 String tag = rs.getString("tag");
-                phs = new AliviaDB(idd, source_name,url, tag);
+                phs = new AliviaDB(idd, source_name, url, tag);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
+        } finally {
             try {
                 connection.close();
             } catch (SQLException throwables) {
@@ -60,10 +60,6 @@ public class AliviaDBDao implements Dao<AliviaDB> {
         return AliviaDB;
     }
 
-    public static void main(String[] args) {
-
-    }
-
     @Override
     public void save(AliviaDB AliviaDB) {
         Connection connection = DBConnection.getConnection();
@@ -83,7 +79,7 @@ public class AliviaDBDao implements Dao<AliviaDB> {
     }
 
     @Override
-    public void update(AliviaDB aliviadb){
+    public void update(AliviaDB aliviadb) {
         Connection connection = DBConnection.getConnection();
         try {
             PreparedStatement ps = connection.prepareStatement("update stocks set id = ?, source_name = ?, url = ?, tag = ? where id = ?;");
@@ -103,24 +99,24 @@ public class AliviaDBDao implements Dao<AliviaDB> {
 
     @Override
     public void delete(AliviaDB aliviadb) {
-    delete(aliviadb.getId());
+        delete(aliviadb.getId());
     }
 
     @Override
     public void delete(int id) {
-            Connection connection = DBConnection.getConnection();
-            try {
-                PreparedStatement ps = connection.prepareStatement("delete from stocks where id = ?;");
-                ps.setInt(1, id);
-                int i = ps.executeUpdate();
-                System.out.println(i);
-                System.out.println("Object was deleted successful");
+        Connection connection = DBConnection.getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement("delete from stocks where id = ?;");
+            ps.setInt(1, id);
+            int i = ps.executeUpdate();
+            System.out.println(i);
+            System.out.println("Object was deleted successful");
 
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
 
-            }
         }
     }
+}
 
 

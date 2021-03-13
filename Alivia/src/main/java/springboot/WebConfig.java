@@ -15,7 +15,7 @@ public class WebConfig {
     @Bean
     ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/webapp/");
+        viewResolver.setPrefix("/resources/static/");
         viewResolver.setSuffix(".html");
         return viewResolver;
     }

@@ -1,18 +1,20 @@
 package springboot;
 
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+
+@Controller
 public class HelloController {
 
+    @RequestMapping("/")
+    public String welcome() {
+        return "index";
+    }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
-        return modelAndView;
+    @RequestMapping("/1")
+    public String welcome1() {
+        return "page1.html";
     }
 }
+
