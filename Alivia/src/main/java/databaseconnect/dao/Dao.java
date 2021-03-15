@@ -5,7 +5,16 @@ import java.util.List;
 public interface Dao<T> {
     T get(int id);
 
-    List<T> getAll();
+    List<T> getAllClouds();
+
+    List<T> getAllEditSoft();
+
+    List<T> getAllEducation();
+
+    List<T> getAllInspiration();
+
+    List<T> getAllStocks();
+
 
     void save(T t);
 

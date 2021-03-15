@@ -1,20 +1,22 @@
 package databaseconnect.entity;
 
-public class AliviaDB {
+public class AliviaObjectInfo {
 
     private int id;
     private String source_name;
     private String url;
-    private String tag;
+    private String description;
+    private String img;
 
-    public AliviaDB() {
+    public AliviaObjectInfo() {
     }
 
-    public AliviaDB(int id, String source_name, String url, String tag) {
+    public AliviaObjectInfo(int id, String source_name, String url, String description, String img) {
         this.id = id;
         this.source_name = source_name;
         this.url = url;
-        this.tag = tag;
+        this.description = description;
+        this.img = img;
 
     }
 
@@ -42,12 +44,20 @@ public class AliviaDB {
         this.url = url;
     }
 
-    public String getTag() {
-        return tag;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.url = img;
     }
 
     @Override
@@ -56,7 +66,8 @@ public class AliviaDB {
                 "id=" + id +
                 ", source_name='" + source_name + '\'' +
                 ", url='" + url + '\'' +
-                ", tag='" + tag + '\'' +
+                ", description='" + description + '\'' +
+                ", img='" + img + '\'' +
                 '}';
     }
 }
