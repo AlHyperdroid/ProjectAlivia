@@ -67,7 +67,7 @@ public class AliviaDBDao implements Dao<AliviaObjectInfo> {
         List<AliviaObjectInfo> AliviaObjectInfo = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("Select * from inspiration");
+            ResultSet rs = statement.executeQuery("Select * from inspiration group by id");
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String source_name = rs.getString("source_name");

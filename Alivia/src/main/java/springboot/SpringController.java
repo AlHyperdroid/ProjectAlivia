@@ -8,11 +8,11 @@ import java.util.List;
 
 
 @RestController
-public class HelloController {
+public class SpringController {
 
-  /*  @RequestMapping("/")
+   /*@RequestMapping("/")
     public String welcome() {
-        return "index";
+        return "index.html";
     }
 
     @RequestMapping("/1")
@@ -49,7 +49,5 @@ public class HelloController {
         AliviaDBDao aliviaDBDao = new AliviaDBDao();
         return aliviaDBDao.getAllClouds();
     }
-
-
 }
 
