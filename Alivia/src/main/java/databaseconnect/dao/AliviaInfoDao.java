@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class AliviaDBDao implements Dao<AliviaObjectInfo> {
+public class AliviaInfoDao implements Dao<AliviaObjectInfo> {
 
     @Override
     public AliviaObjectInfo get(int id) {
@@ -36,6 +36,28 @@ public class AliviaDBDao implements Dao<AliviaObjectInfo> {
             }
         }
         return phs;
+    }
+
+    @Override
+    public List<AliviaObjectInfo> getAllHome() {
+        Connection connection = DBConnection.getConnection();
+        List<AliviaObjectInfo> AliviaObjectInfo = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("Select * from home");
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String source_name = rs.getString("source_name");
+                String url = rs.getString("url");
+                String description = rs.getString("description");
+
+                AliviaObjectInfo phs = new AliviaObjectInfo(id, source_name, url, description);
+                AliviaObjectInfo.add(phs);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return AliviaObjectInfo;
     }
 
     @Override

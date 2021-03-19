@@ -15,6 +15,7 @@ public interface Dao<T> {
 
     List<T> getAllStocks();
 
+    List<T> getAllHome();
 
     void save(T t);
 

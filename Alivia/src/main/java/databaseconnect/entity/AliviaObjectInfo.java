@@ -20,6 +20,9 @@ public class AliviaObjectInfo {
 
     }
 
+    public AliviaObjectInfo(int id, String source_name, String url, String description) {
+    }
+
     public int getId() {
         return id;
     }
