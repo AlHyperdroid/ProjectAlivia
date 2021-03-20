@@ -13,9 +13,6 @@ export default {
   name: 'HelloWorld',
   components: {InfoComponent}
 }
-fetch("https://localhost:8081/inspiration")
-.then(response => response.json())
-.then(data => (this.name = data.id))
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

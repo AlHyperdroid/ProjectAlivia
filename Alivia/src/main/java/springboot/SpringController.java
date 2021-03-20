@@ -9,9 +9,9 @@ import java.util.List;
 @RestController
 public class SpringController {
 
-   /*@RequestMapping("/")
+  /* @RequestMapping("/")
     public String welcome() {
-        return "index.html";
+        return "/index.html";
     }
 
     @RequestMapping("/1")
