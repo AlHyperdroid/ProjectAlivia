@@ -10,31 +10,39 @@ export default class ApiService {
     }
 
     async _request(url) {
-        return await fetch(url)
+        return await fetch(url,
+            {
+                headers: {
+                    method: 'GET',
+                    mode: 'no-cors',
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json'
+                }
+            })
             .then(res => res.json())
     }
 
-    async getInspiration() {
+    inspiration = async () => {
         return await this._request(this._urls["inspiration"])
     }
 
-    async getHome() {
+    home = async () => {
         return await this._request(this._urls["home"])
     }
 
-    async getEducation() {
+    education = async () => {
         return await this._request(this._urls["education"])
     }
 
-    async getEditsoft() {
+    soft = async () => {
         return await this._request(this._urls["editsoft"])
     }
 
-    async getStocks() {
+    stocks = async () => {
         return await this._request(this._urls["stocks"])
     }
 
-    async getClouds() {
+    clouds = async () => {
         return await this._request(this._urls["clouds"])
     }
 }

@@ -6,18 +6,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
+
 @RestController
 public class SpringController {
 
   /* @RequestMapping("/")
     public String welcome() {
-        return "/index.html";
+        return "templates/index.html";
     }
 
     @RequestMapping("/1")
     public String welcome1() {
         return "page1.html";
-    }*/
+    }/*
+
+   */
+ // @CrossOrigin(origins= "http://localhost:8081/home")
    @GetMapping("/home")
    public List<AliviaObjectInfo> getAllHome() {
        AliviaInfoDao aliviaInfoDao = new AliviaInfoDao();
