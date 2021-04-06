@@ -3,30 +3,18 @@ package springboot;
 import databaseconnect.dao.AliviaInfoDao;
 import databaseconnect.entity.AliviaObjectInfo;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
+import java.util.List;
 
 
 @RestController
 public class SpringController {
 
-  /* @RequestMapping("/")
-    public String welcome() {
-        return "templates/index.html";
+    @GetMapping("/home")
+    public List<AliviaObjectInfo> getAllHome() {
+        AliviaInfoDao aliviaInfoDao = new AliviaInfoDao();
+        return aliviaInfoDao.getAllHome();
     }
-
-    @RequestMapping("/1")
-    public String welcome1() {
-        return "page1.html";
-    }/*
-
-   */
- // @CrossOrigin(origins= "http://localhost:8081/home")
-   @GetMapping("/home")
-   public List<AliviaObjectInfo> getAllHome() {
-       AliviaInfoDao aliviaInfoDao = new AliviaInfoDao();
-       return aliviaInfoDao.getAllHome();
-   }
 
     @GetMapping("/inspiration")
     public List<AliviaObjectInfo> getAllInspiration() {

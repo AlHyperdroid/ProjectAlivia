@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Alivia/Alivia.iml" filepath="$PROJECT_DIR$/Alivia/Alivia.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/AliviaTwo.iml" filepath="$PROJECT_DIR$/.idea/AliviaTwo.iml" />
     </modules>
   </component>
 </project>
